@@ -1,19 +1,32 @@
 {
-  "posts": [
+  "asiakkaat": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "id": "1",
+      "nimi": "Aku ankka",
+      "osoite": "AkuAnkantie 10",
+      "postinumero": "10100",
+      "postitoimipaikka": "Ankkala"
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": "2",
+      "nimi": "Iines Ankka",
+      "osoite": "IinesAnkantie 10",
+      "postinumero": "20100",
+      "postitoimipaikka": "Iines Ankkala"
+    },
+    {
+      "id": "3",
+      "nimi": "Roope Ankka",
+      "osoite": "RoopeAnkantie 10",
+      "postinumero": "30100",
+      "postitoimipaikka": "Roope Ankkala"
+    },
+    {
+      "id": "4",
+      "nimi": "Hessu Hopo",
+      "osoite": "HessuHoponTie 10",
+      "postinumero": "40100",
+      "postitoimipaikka": "Hessu Hopola"
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
