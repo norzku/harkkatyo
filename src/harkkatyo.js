@@ -2,25 +2,25 @@
 
 import React, { useState, useEffect } from "react";
 
-function Asiakaslista3(props) {
-  const [userlist, setUserlist] = useState([]);
+function Tuotelista(props) {
+  const [productlist, setProductlist] = useState([]);
   const [name, setName] = useState("");
-  const [osoite, setAddress] = useState("");
+  const [hyllypaikka, setHyllypaikka] = useState("");
   const [loading, setLoading] = useState(false);
   const teksti = "Annetuilla hakuehdoilla ei löytynyt dataa";
-  
+
   async function fetchData() {
     setLoading(false);
-    setUserlist([]);
+    setProductlist([]);
     let response = await fetch(
-      "http://localhost:4000/asiakkaat?nimi_like=" +
+      "http://localhost:4000/tuotteet?nimi_like=" +
         name +
-        "&osoite_like=" +
-        osoite
+        "&hyllypaikka_like=" +
+        hyllypaikka
     );
     let data = await response.json();
     setLoading(true);
-    setUserlist(data);  
+    setProductlist(data);
   }
 
   useEffect(() => {
@@ -31,53 +31,49 @@ function Asiakaslista3(props) {
     console.log(event);
     setName(event.target.value);
   };
-  const muutaOsoite = (event) => {
+  const muutaHyllypaikka = (event) => {
     // tai function(event) {...}
     console.log(event);
-    setAddress(event.target.value);
+    setHyllypaikka(event.target.value);
   };
-
-
 
   return (
     <>
       <div className="App">
         <label>
-          Name:
+          Nimi:
           <input type="text" onChange={muutaNimi} />{" "}
         </label>
         <label>
-          Address:
-          <input type="text" onChange={muutaOsoite} />{" "}
+          Hyllypaikka:
+          <input type="text" onChange={muutaHyllypaikka} />{" "}
         </label>
         <button type="submit" onClick={fetchData}>
           Search
         </button>
       </div>
       {loading === false && <p>Loading...</p>}
-      {userlist.length === 0 && loading === true ? <p>{teksti}</p>: null}
-      {userlist.length > 0 && (
+      {productlist.length === 0 && loading === true ? <p>{teksti}</p> : null}
+      {productlist.length > 0 && (
         <div>
           <table>
             <thead>
               <tr>
-                <th>id</th>
+                <th>ID</th>
                 <th>Nimi</th>
-                <th>Osoite</th>
-                <th>Postinumero</th>
-                <th>Postitoimipaikka</th>
+                <th>Hyllypaikka</th>
+                <th>Määrä</th>
               </tr>
             </thead>
 
             <tbody>
-              {userlist.map((user) => {
+              {productlist.map((product) => {
                 return (
-                  <tr key={user.id}>
-                    <td>{user.id}</td>
-                    <td>{user.nimi}</td>
-                    <td>{user.osoite}</td>
-                    <td>{user.postinumero}</td>
-                    <td>{user.postitoimipaikka}</td>
+                  <tr key={product.id}>
+                    <td>{product.id}</td>
+                    <td>{product.nimi}</td>
+                    <td>{product.hyllypaikka}</td>
+                    <td>{product.maara}</td>
                   </tr>
                 );
               })}
@@ -86,7 +82,7 @@ function Asiakaslista3(props) {
         </div>
       )}
     </>
-  );          
+  );
 }
 
-export default Asiakaslista3;
+export default Tuotelista;

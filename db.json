@@ -1,32 +1,35 @@
 {
-  "asiakkaat": [
+  "tuotteet": [
     {
       "id": "1",
-      "nimi": "Aku ankka",
-      "osoite": "AkuAnkantie 10",
-      "postinumero": "10100",
-      "postitoimipaikka": "Ankkala"
+      "nimi": "Kurkku",
+      "hyllypaikka": "1",
+      "maara": "2"
     },
     {
       "id": "2",
-      "nimi": "Iines Ankka",
-      "osoite": "IinesAnkantie 10",
-      "postinumero": "20100",
-      "postitoimipaikka": "Iines Ankkala"
+      "nimi": "Tomaatti",
+      "hyllypaikka": "1",
+      "maara": "2"
     },
     {
       "id": "3",
-      "nimi": "Roope Ankka",
-      "osoite": "RoopeAnkantie 10",
-      "postinumero": "30100",
-      "postitoimipaikka": "Roope Ankkala"
+      "nimi": "Paita",
+      "hyllypaikka": "2",
+      "maara": "2"
     },
     {
       "id": "4",
-      "nimi": "Hessu Hopo",
-      "osoite": "HessuHoponTie 10",
-      "postinumero": "40100",
-      "postitoimipaikka": "Hessu Hopola"
+      "nimi": "Housut",
+      "hyllypaikka": "2",
+      "maara": "2"
+    },
+    {
+      "id": "5",
+      "nimi": "Polkupyörä",
+      "hyllypaikka": "3",
+      "maara": "3"
     }
+ 
   ]
 }
