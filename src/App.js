@@ -1,15 +1,17 @@
 //json-server db.json --watch --port 4000 -delay 1000
 
-import logo from "./logo.svg";
+import { Outlet, NavLink } from "react-router-dom";
 import "./App.css";
-import Tuotelista from "./harkkatyo";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Tuotelista />
-      </header>
+      <h1>Tuotehallinta</h1>
+      <nav>
+        <NavLink to="/products">Tuotehaku</NavLink>|
+        <NavLink to="/editproducts">Lisää/poista tuotteita</NavLink> |
+      </nav>
+      <Outlet />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 // Käynnistä REST-API komennolla npx json-server db.json --watch --port 4000 --delay 1000
-
+import "./harkkatyo.css";
 import React, { useState, useEffect } from "react";
 
 function Tuotelista(props) {
@@ -40,6 +40,7 @@ function Tuotelista(props) {
   return (
     <>
       <div className="App">
+        <br></br>
         <label>
           Nimi:
           <input type="text" onChange={muutaNimi} />{" "}
@@ -52,11 +53,12 @@ function Tuotelista(props) {
           Search
         </button>
       </div>
+      <br></br>
       {loading === false && <p>Loading...</p>}
       {productlist.length === 0 && loading === true ? <p>{teksti}</p> : null}
       {productlist.length > 0 && (
         <div>
-          <table>
+          <table className="center">
             <thead>
               <tr>
                 <th>ID</th>
