@@ -7,13 +7,17 @@ import Editproducts from "./editproducts";
 import Tuotelista from "./harkkatyo";
 import App from "./App";
 import Koti from "./Koti";
+import Tuote from "./tuote";
 
 ReactDOMClient.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<Koti />} />
-        <Route path="products" element={<Tuotelista />} />
+        <Route path="products">
+            <Route index element={<Tuotelista />} />
+            <Route path=":productId" element={<Tuote />} />
+</Route>
 
         <Route path="editproducts" element={<Editproducts />} />
         <Route
