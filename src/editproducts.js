@@ -1,11 +1,21 @@
 import { Component } from "react";
-import React from "react";
+import "./harkkatyo.css";
+import "./index.css";
 
 class Editproducts extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: null, products: [] };
+    this.state = {
+      id: null,
+      nimi: null,
+      hyllypaikka: null,
+      maara: null,
+      data: null,
+      products: [],
+    };
     this.poista = this.poista.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.lisaaTuote = this.lisaaTuote.bind(this);
   }
 
   componentDidMount() {
@@ -18,27 +28,51 @@ class Editproducts extends Component {
         });
       });
   }
+  handleChange(event) {
+    this.setState({
+      id: event.target.value,
+      nimi: event.target.value,
+      hyllypaikka: event.target.value,
+      maara: event.target.value,
+    });
+  }
 
-  async lisaaPoistettava() {
+  async lisaaTuote(event) {
+    event.preventDefault();
+    let uusiTuote = {
+      id: this.state.id,
+      nimi: this.state.nimi,
+      hyllypaikka: this.state.hyllypaikka,
+      maara: this.state.maara,
+    };
+    console.log("Hyvin menee");
     // näin voidaan määrittää asynkroninen haku ilman, että se erikseen otetaan muuttujaan
     await fetch("http://localhost:4000/tuotteet", {
-      method: "DELETE", // Tässä voidaan määrittää metodi
+      method: "POST", // Tässä voidaan määrittää metodi
       headers: {
         // jos http-kutsu tehdään näin, niin pitää määrittää myös headerit
         "Content-Type": "application/json",
       },
+      body: JSON.stringify(uusiTuote),
       // body-lohkossa pitää välittää data palvelimelle post ja put-metodeilla. Deletellä tämä ei ole pakollista
     }).then((response) => {
+      this.setState((prevState) => ({
+        products: [...prevState.products, uusiTuote],
+      }));
       console.log(response);
-      this.fetchData();
     });
   }
   poista(event) {
     console.log(event.target.id);
     fetch("http://localhost:4000/tuotteet/" + event.target.id, {
       method: "DELETE",
-    }).then(() => this.setState({products: products.filter(product => product.id !== event.target.id}));
-    // Kutsutaan fetchiä delete-metodilla
+    }).then((e) => {
+      this.setState((prevState) => {
+        return {
+          products: prevState.products.filter((p) => p.id !== event.target.id),
+        };
+      });
+    });
   }
 
   render() {
@@ -53,39 +87,84 @@ class Editproducts extends Component {
       // Vasta kun data on haettu json-serveriltä, niin voidaan käsitellä data ja lisätä html-komponentit
       const { products } = this.state;
       return (
-        <div>
-            <><div className="App">
-              <table>
-                <thead>
-                  <tr>
-                    <th>id</th>
-                    <th>Nimi</th>
-                    <th>Osoite</th>
-                    <th>Postinumero</th>
-                    <th>Postitoimipaikka</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {products.map((product) => {
-                    return (
-                      <tr key={product.id}>
-                    <td>{product.id}</td>
-                    <td>{product.nimi}</td>
-                    <td>{product.hyllypaikka}</td>
-                    <td>{product.maara}</td>
-                        <td>
-                          <button onClick={this.poista} id={product.id}>
-                            Poista
-                          </button>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </>
-        </div>
+        <>
+          <div>
+            <form onSubmit={this.lisaaTuote}>
+              <label>
+                ID:
+                <input
+                  type="text"
+                  value={this.state.value}
+                  onChange={(e) => {
+                    this.setState({ id: e.target.value });
+                  }}
+                />{" "}
+              </label>
+              <label>
+                Nimi:
+                <input
+                  type="text"
+                  value={this.state.value}
+                  onChange={(e) => {
+                    this.setState({ nimi: e.target.value });
+                  }}
+                />{" "}
+              </label>
+              <label>
+                Hyllypaikka:
+                <input
+                  type="text"
+                  value={this.state.value}
+                  onChange={(e) => {
+                    this.setState({ hyllypaikka: e.target.value });
+                  }}
+                />{" "}
+              </label>{" "}
+              <label>
+                Määrä:
+                <input
+                  type="text"
+                  value={this.state.value}
+                  onChange={(e) => {
+                    this.setState({ maara: e.target.value });
+                  }}
+                />{" "}
+              </label>
+              <input type="submit" value="Lisää" />
+            </form>{" "}
+          </div>
+
+          <div className="App">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nimi</th>
+                  <th>Hyllypaikka</th>
+                  <th>Määrä</th>
+                  <th>Poista</th>
+                </tr>
+              </thead>
+              <tbody>
+                {products.map((product) => {
+                  return (
+                    <tr key={product.id}>
+                      <td>{product.id}</td>
+                      <td>{product.nimi}</td>
+                      <td>{product.hyllypaikka}</td>
+                      <td>{product.maara}</td>
+                      <td>
+                        <button onClick={this.poista} id={product.id}>
+                          Poista
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </>
       );
     }
   }

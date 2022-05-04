@@ -7,22 +7,28 @@
       "maara": "2"
     },
     {
-      "id": "2",
-      "nimi": "Tomaatti",
-      "hyllypaikka": "1",
-      "maara": "2"
-    },    
-    {
       "id": "3",
       "nimi": "Kurkku",
       "hyllypaikka": "1",
       "maara": "2"
     },
     {
+      "id": "2",
+      "nimi": "asd",
+      "hyllypaikka": "2",
+      "maara": "23"
+    },
+    {
+      "id": "10",
+      "nimi": "Omena",
+      "hyllypaikka": "10",
+      "maara": "20"
+    },
+    {
       "id": "4",
-      "nimi": "Kurkku",
-      "hyllypaikka": "1",
-      "maara": "2"
+      "nimi": "Auto",
+      "hyllypaikka": "3",
+      "maara": "10"
     }
   ]
 }
