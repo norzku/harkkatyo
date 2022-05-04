@@ -2,7 +2,7 @@ import { Component } from "react";
 import "./harkkatyo.css";
 import "./index.css";
 import { Link } from "react-router-dom";
-import { Button } from '@mui/material';
+import { Button } from "@mui/material";
 
 class Editproducts extends Component {
   constructor(props) {
@@ -51,31 +51,6 @@ class Editproducts extends Component {
     // näin voidaan määrittää asynkroninen haku ilman, että se erikseen otetaan muuttujaan
     await fetch("http://localhost:4000/tuotteet", {
       method: "POST", // Tässä voidaan määrittää metodi
-      headers: {
-        // jos http-kutsu tehdään näin, niin pitää määrittää myös headerit
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(uusiTuote),
-      // body-lohkossa pitää välittää data palvelimelle post ja put-metodeilla. Deletellä tämä ei ole pakollista
-    }).then((response) => {
-      this.setState((prevState) => ({
-        products: [...prevState.products, uusiTuote],
-      }));
-      console.log(response);
-    });
-  }
-  async muokkaaTuote(event) {
-    event.preventDefault();
-    let uusiTuote = {
-      id: this.state.id,
-      nimi: this.state.nimi,
-      hyllypaikka: this.state.hyllypaikka,
-      maara: this.state.maara,
-    };
-    console.log("HotPink");
-    // näin voidaan määrittää asynkroninen haku ilman, että se erikseen otetaan muuttujaan
-    await fetch("http://localhost:4000/tuotteet", {
-      method: "PUT", // Tässä voidaan määrittää metodi
       headers: {
         // jos http-kutsu tehdään näin, niin pitää määrittää myös headerit
         "Content-Type": "application/json",
@@ -162,7 +137,7 @@ class Editproducts extends Component {
           </div>
 
           <div className="App">
-            <table>
+            <table className="center">
               <thead>
                 <tr>
                   <th>ID</th>
@@ -187,9 +162,9 @@ class Editproducts extends Component {
                         </button>
                       </td>
                       <td>
-                      <Link to={`/products/${product.id}`}>
-          <Button>Edit</Button>
-        </Link>
+                        <Link to={`/products/${product.id}`}>
+                          <Button>Edit</Button>
+                        </Link>
                       </td>
                     </tr>
                   );
