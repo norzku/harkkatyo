@@ -8,6 +8,7 @@ function App() {
     <div className="App">
       <h1>Tuotehallinta</h1>
       <nav>
+        <NavLink to="/">Koti</NavLink>|
         <NavLink to="/products">Tuotehaku</NavLink>|
         <NavLink to="/editproducts">Lisää/poista tuotteita</NavLink> |
       </nav>
