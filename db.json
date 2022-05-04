@@ -11,25 +11,18 @@
       "nimi": "Tomaatti",
       "hyllypaikka": "1",
       "maara": "2"
-    },
+    },    
     {
       "id": "3",
-      "nimi": "Paita",
-      "hyllypaikka": "2",
+      "nimi": "Kurkku",
+      "hyllypaikka": "1",
       "maara": "2"
     },
     {
       "id": "4",
-      "nimi": "Housut",
-      "hyllypaikka": "2",
+      "nimi": "Kurkku",
+      "hyllypaikka": "1",
       "maara": "2"
-    },
-    {
-      "id": "5",
-      "nimi": "Polkupyörä",
-      "hyllypaikka": "3",
-      "maara": "3"
     }
- 
   ]
 }
