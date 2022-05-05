@@ -3,6 +3,8 @@ import "./harkkatyo.css";
 import "./index.css";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import TextField from "@mui/material/TextField";
 
 class Editproducts extends Component {
   constructor(props) {
@@ -92,47 +94,58 @@ class Editproducts extends Component {
         <>
           <div>
             <form onSubmit={this.lisaaTuote}>
-              <label>
-                ID:
-                <input
-                  type="text"
-                  value={this.state.value}
-                  onChange={(e) => {
-                    this.setState({ id: e.target.value });
-                  }}
-                />{" "}
-              </label>
-              <label>
-                Nimi:
-                <input
-                  type="text"
-                  value={this.state.value}
-                  onChange={(e) => {
-                    this.setState({ nimi: e.target.value });
-                  }}
-                />{" "}
-              </label>
-              <label>
-                Hyllypaikka:
-                <input
-                  type="text"
-                  value={this.state.value}
-                  onChange={(e) => {
-                    this.setState({ hyllypaikka: e.target.value });
-                  }}
-                />{" "}
-              </label>{" "}
-              <label>
-                Määrä:
-                <input
-                  type="text"
-                  value={this.state.value}
-                  onChange={(e) => {
-                    this.setState({ maara: e.target.value });
-                  }}
-                />{" "}
-              </label>
-              <input type="submit" value="Lisää" />
+              <TextField
+                id="id"
+                label="ID"
+                variant="filled"
+                size="small"
+                value={this.state.value}
+                onChange={(e) => {
+                  this.setState({ id: e.target.value });
+                }}
+              />{" "}
+              &nbsp;
+              <TextField
+                id="nimi"
+                label="Nimi"
+                variant="filled"
+                size="small"
+                value={this.state.value}
+                onChange={(e) => {
+                  this.setState({ nimi: e.target.value });
+                }}
+              />{" "}
+              &nbsp;
+              <TextField
+                id="hyllypaikka"
+                label="Hyllypaikka"
+                variant="filled"
+                size="small"
+                value={this.state.value}
+                onChange={(e) => {
+                  this.setState({ hyllypaikka: e.target.value });
+                }}
+              />{" "}
+              &nbsp;
+              <TextField
+                id="maara"
+                label="Määrä"
+                variant="filled"
+                size="small"
+                value={this.state.value}
+                onChange={(e) => {
+                  this.setState({ maara: e.target.value });
+                }}
+              />{" "}
+              &nbsp;
+              <Button
+                variant="contained"
+                color="success"
+                type="submit"
+                value="Lisää"
+              >
+                Lisää
+              </Button>
             </form>{" "}
           </div>
 
@@ -157,13 +170,21 @@ class Editproducts extends Component {
                       <td>{product.hyllypaikka}</td>
                       <td>{product.maara}</td>
                       <td>
-                        <button onClick={this.poista} id={product.id}>
+                        <Button
+                          variant="contained"
+                          color="error"
+                          startIcon={<DeleteIcon />}
+                          onClick={this.poista}
+                          id={product.id}
+                        >
                           Poista
-                        </button>
+                        </Button>
                       </td>
                       <td>
                         <Link to={`/products/${product.id}`}>
-                          <Button>Edit</Button>
+                          <Button variant="contained" color="secondary">
+                            Edit
+                          </Button>
                         </Link>
                       </td>
                     </tr>

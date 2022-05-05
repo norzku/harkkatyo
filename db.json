@@ -23,6 +23,12 @@
       "nimi": "Auto",
       "hyllypaikka": "3",
       "maara": "10"
+    },
+    {
+      "id": "5",
+      "nimi": "Papaija",
+      "hyllypaikka": "4",
+      "maara": "13"
     }
   ]
 }

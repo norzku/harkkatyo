@@ -1,6 +1,8 @@
 // Käynnistä REST-API komennolla npx json-server db.json --watch --port 4000 --delay 1000
 import "./harkkatyo.css";
 import React, { useState, useEffect } from "react";
+import { Button } from "@mui/material";
+import TextField from "@mui/material/TextField";
 
 function Tuotelista(props) {
   const [productlist, setProductlist] = useState([]);
@@ -41,17 +43,24 @@ function Tuotelista(props) {
     <>
       <div className="App">
         <br></br>
-        <label>
-          Nimi:
-          <input type="text" onChange={muutaNimi} />{" "}
-        </label>
-        <label>
-          Hyllypaikka:
-          <input type="text" onChange={muutaHyllypaikka} />{" "}
-        </label>
-        <button type="submit" onClick={fetchData}>
+        <TextField
+          id="nimi"
+          label="Nimi"
+          variant="filled"
+          size="small"
+          onChange={muutaNimi}
+        />
+        &nbsp;
+        <TextField
+          id="hyllypaikka"
+          label="Hyllypaikka"
+          variant="filled"
+          size="small"
+          onChange={muutaHyllypaikka}
+        />{" "}
+        <Button variant="contained" color="secondary" onClick={fetchData}>
           Search
-        </button>
+        </Button>
       </div>
       <br></br>
       {loading === false && <p>Loading...</p>}
