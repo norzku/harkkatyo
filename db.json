@@ -1,14 +1,8 @@
 {
   "tuotteet": [
     {
-      "id": "1",
-      "nimi": "Kivi",
-      "hyllypaikka": "9",
-      "maara": "9"
-    },
-    {
       "id": "3",
-      "nimi": "Lokki",
+      "nimi": "Kokki",
       "hyllypaikka": "10",
       "maara": "10"
     },

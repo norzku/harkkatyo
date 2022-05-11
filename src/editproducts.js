@@ -161,7 +161,7 @@ class Editproducts extends Component {
                   return (
                     <tr key={product.id}>
                       <td>{product.id}</td>
-                      <td data-testid="pUser">{product.nimi}</td>
+                      <td data-testid="aUser">{product.nimi}</td>
                       <td>{product.hyllypaikka}</td>
                       <td>{product.maara}</td>
                       <td>
