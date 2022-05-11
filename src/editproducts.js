@@ -50,15 +50,12 @@ class Editproducts extends Component {
       maara: this.state.maara,
     };
     console.log("Hyvin menee");
-    // näin voidaan määrittää asynkroninen haku ilman, että se erikseen otetaan muuttujaan
     await fetch("http://localhost:4000/tuotteet", {
-      method: "POST", // Tässä voidaan määrittää metodi
+      method: "POST",
       headers: {
-        // jos http-kutsu tehdään näin, niin pitää määrittää myös headerit
         "Content-Type": "application/json",
       },
       body: JSON.stringify(uusiTuote),
-      // body-lohkossa pitää välittää data palvelimelle post ja put-metodeilla. Deletellä tämä ei ole pakollista
     }).then((response) => {
       this.setState((prevState) => ({
         products: [...prevState.products, uusiTuote],
@@ -81,14 +78,12 @@ class Editproducts extends Component {
 
   render() {
     if (this.state.DataisLoaded == null)
-      // Tämä koodi palautuu komponenttia luodessa, koska alustettiin data konstruktorissa
       return (
         <div>
           <p>Loading...</p>
         </div>
       );
     else if (this.state.DataisLoaded != null) {
-      // Vasta kun data on haettu json-serveriltä, niin voidaan käsitellä data ja lisätä html-komponentit
       const { products } = this.state;
       return (
         <>
@@ -166,7 +161,7 @@ class Editproducts extends Component {
                   return (
                     <tr key={product.id}>
                       <td>{product.id}</td>
-                      <td>{product.nimi}</td>
+                      <td data-testid="pUser">{product.nimi}</td>
                       <td>{product.hyllypaikka}</td>
                       <td>{product.maara}</td>
                       <td>

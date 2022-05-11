@@ -48,6 +48,7 @@ function Tuotelista(props) {
           label="Nimi"
           variant="filled"
           size="small"
+          data-testid="inputName"
           onChange={muutaNimi}
         />
         &nbsp;
@@ -58,7 +59,7 @@ function Tuotelista(props) {
           size="small"
           onChange={muutaHyllypaikka}
         />{" "}
-        <Button variant="contained" color="secondary" onClick={fetchData}>
+        <Button variant="contained" color="secondary" onClick={fetchData} data-testid="btn1">
           Search
         </Button>
       </div>
@@ -82,7 +83,7 @@ function Tuotelista(props) {
                 return (
                   <tr key={product.id}>
                     <td>{product.id}</td>
-                    <td>{product.nimi}</td>
+                    <td data-testid="pUser">{product.nimi}</td>
                     <td>{product.hyllypaikka}</td>
                     <td>{product.maara}</td>
                   </tr>

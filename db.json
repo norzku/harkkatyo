@@ -2,21 +2,21 @@
   "tuotteet": [
     {
       "id": "1",
-      "nimi": "Kurkku",
-      "hyllypaikka": "1",
-      "maara": "2"
+      "nimi": "Kivi",
+      "hyllypaikka": "9",
+      "maara": "9"
     },
     {
       "id": "3",
-      "nimi": "Kurkku",
-      "hyllypaikka": "1",
-      "maara": "2"
+      "nimi": "Lokki",
+      "hyllypaikka": "10",
+      "maara": "10"
     },
     {
       "id": "10",
-      "nimi": "Omena",
+      "nimi": "Päärynä",
       "hyllypaikka": "10",
-      "maara": "20"
+      "maara": "10"
     },
     {
       "id": "4",
@@ -29,6 +29,12 @@
       "nimi": "Papaija",
       "hyllypaikka": "4",
       "maara": "13"
+    },
+    {
+      "id": "7",
+      "nimi": "Majoneesi",
+      "hyllypaikka": "70",
+      "maara": "1000"
     }
   ]
 }
